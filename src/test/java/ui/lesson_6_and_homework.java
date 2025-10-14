@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class lesson_6_and_homework {
 
     private static final String BASE_URL="https://bonigarcia.dev/selenium-webdriver-java/";
@@ -32,7 +34,7 @@ public class lesson_6_and_homework {
         WebElement webFormButton = driver.findElement(By.xpath("//a[@href='web-form.html']"));
         Thread.sleep(1000);
         webFormButton.click();
-
+;
         //driver.findElement(By.xpath("//form")).submit();
         //Thread.sleep(3000);
         //driver.findElement(By.xpath("//button[@type='submit']")).click();
@@ -48,7 +50,58 @@ public class lesson_6_and_homework {
         select.selectByValue("3");
         Assertions.assertEquals("Three", select.getFirstSelectedOption().getText());
 
+        List<WebElement> selected = select.getAllSelectedOptions();
+        Assertions.assertEquals(1, selected.size());
+
+        List<WebElement> options = select.getOptions();
+        Assertions.assertEquals(4, options.size());
 
     }
+
+    @Test
+    void inputsTextTest() throws InterruptedException{
+
+        WebElement webFormButton = driver.findElement(By.xpath("//a[@href='web-form.html']"));
+        Thread.sleep(1000);
+        webFormButton.click();
+
+        WebElement inputText = driver.findElement(By.xpath("//input[@name='my-text']"));
+        inputText.click();
+        inputText.sendKeys("Test text");
+
+        WebElement inputTextPassword = driver.findElement(By.xpath("//input[@name='my-password']"));
+        inputTextPassword.click();
+        inputTextPassword.sendKeys("password");
+
+        WebElement inputTextArea = driver.findElement(By.xpath("//textarea[@name='my-textarea']"));
+        inputTextArea.click();
+        inputTextArea.sendKeys("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo");
+
+        Assertions.assertEquals("Test text", inputText.getDomProperty("value"));
+        Assertions.assertEquals("password", inputTextPassword.getDomProperty("value"));
+        Assertions.assertEquals("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo", inputTextArea.getDomProperty("value"));
+    }
+
+    @Test
+    void inputTfextTest() throws InterruptedException{
+
+        WebElement webFormButton = driver.findElement(By.xpath("//a[@href='web-form.html']"));
+        Thread.sleep(1000);
+        webFormButton.click();
+
+        WebElement inputText = driver.findElement(By.xpath("//input[@name='my-text']"));
+        inputText.click();
+        inputText.sendKeys("Test text");
+
+        Assertions.assertEquals("Test text", inputText.getDomProperty("value"));
+
+        WebElement disableInput = driver.findElement(By.name("my-disabled"));
+        Assertions.assertEquals("true", disableInput.getDomAttribute("disabled"));
+
+        WebElement readonlyInput = driver.findElement(By.name("my-readonly"));
+        Assertions.assertEquals("true", readonlyInput.getDomAttribute("readonly"));
+
+    }
+
 
 }
