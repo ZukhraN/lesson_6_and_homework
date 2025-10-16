@@ -101,6 +101,22 @@ public class lesson_6_and_homework {
         WebElement readonlyInput = driver.findElement(By.name("my-readonly"));
         Assertions.assertEquals("true", readonlyInput.getDomAttribute("readonly"));
 
+        WebElement selectOption = driver.findElement(By.className("form-select"));
+        Select select = new Select(selectOption);
+        select.selectByIndex(2);
+        Assertions.assertEquals("Two", select.getFirstSelectedOption().getText());
+
+        WebElement inputCity = driver.findElement(By.name("my-datalist"));
+        inputCity.sendKeys("Seattle");
+        WebElement dataList = driver.findElement(By.id("my-options"));
+        List<WebElement> options = dataList.findElements(By.tagName("option"));
+
+        for (WebElement option: options){
+            System.out.println(option.getDomProperty("value"));
+        }
+
+        String currentSelected = inputCity.getDomProperty("value");
+        Assertions.assertEquals("Seattle", currentSelected);
     }
 
 
