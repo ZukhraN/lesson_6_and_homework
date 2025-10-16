@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
 import java.util.List;
 
 public class lesson_6_and_homework {
@@ -117,6 +118,17 @@ public class lesson_6_and_homework {
 
         String currentSelected = inputCity.getDomProperty("value");
         Assertions.assertEquals("Seattle", currentSelected);
+
+
+        File uploadFile = new File("src/test/resources/file.jpg");
+        WebElement fileInput = driver.findElement(By.name("my-file"));
+        fileInput.sendKeys(uploadFile.getAbsolutePath());
+
+        //driver.findElement(By..click();
+        Assertions.assertEquals("file.jpg", fileInput.getText());
+
+
+
     }
 
 
