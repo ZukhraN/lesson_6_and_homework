@@ -143,6 +143,7 @@ public class lesson_6_and_homework {
         }
         Assertions.assertTrue(radio.isSelected(), "Радиобатон должен быть выбран");
 
+
         WebElement colors = driver.findElement(By.name("my-colors"));
         colors.sendKeys("#00ff00");
 
@@ -150,10 +151,10 @@ public class lesson_6_and_homework {
         dateInput.click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(".datepicker-days")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".datepicker-days")));
 
         while (true) {
-            WebElement monthLabel = driver.findElement(By.className(".datepicker-switch"));
+            WebElement monthLabel = driver.findElement(By.cssSelector(".datepicker-switch"));
             if (monthLabel.getText().equals("October 2025")) {
                 break;
             }
