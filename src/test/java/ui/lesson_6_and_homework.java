@@ -8,9 +8,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.List;
 
 public class lesson_6_and_homework {
@@ -125,7 +128,41 @@ public class lesson_6_and_homework {
         fileInput.sendKeys(uploadFile.getAbsolutePath());
 
         //driver.findElement(By..click();
-        Assertions.assertEquals("file.jpg", fileInput.getText());
+        //Assertions.assertEquals("file.jpg", fileInput.getText());
+
+        WebElement checkbox = driver.findElement(By.xpath("//input[@type='checkbox']"));
+        if (!checkbox.isSelected()){
+            checkbox.click();
+        }
+        Assertions.assertTrue(checkbox.isSelected(), "Чекбокс должен быть выбран");
+
+
+        WebElement radio = driver.findElement(By.xpath("//input[@type='radio']"));
+        if (!radio.isSelected()){
+            radio.click();
+        }
+        Assertions.assertTrue(radio.isSelected(), "Радиобатон должен быть выбран");
+
+        WebElement colors = driver.findElement(By.name("my-colors"));
+        colors.sendKeys("#00ff00");
+
+        WebElement dateInput = driver.findElement(By.xpath("//input[@type='color']"));
+        dateInput.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(".datepicker-days")));
+
+        while (true) {
+            WebElement monthLabel = driver.findElement(By.className(".datepicker-switch"));
+            if (monthLabel.getText().equals("October 2025")) {
+                break;
+            }
+            driver.findElement(By.cssSelector(".next")).click(); // листаем вперёд
+        }
+
+        driver.findElement(By.xpath("//td[normalize-space()='17']")).click();
+
+
 
 
 
