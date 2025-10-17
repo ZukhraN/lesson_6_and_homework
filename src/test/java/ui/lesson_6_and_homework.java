@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -146,22 +147,21 @@ public class lesson_6_and_homework {
 
         WebElement colors = driver.findElement(By.name("my-colors"));
         colors.sendKeys("#00ff00");
+        colors.sendKeys(Keys.TAB);
 
         WebElement dateInput = driver.findElement(By.xpath("//input[@type='color']"));
         dateInput.click();
 
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".datepicker-days")));
 
-        while (true) {
-            WebElement monthLabel = driver.findElement(By.cssSelector(".datepicker-switch"));
-            if (monthLabel.getText().equals("October 2025")) {
-                break;
-            }
-            driver.findElement(By.cssSelector(".next")).click(); // листаем вперёд
-        }
+        WebElement dayToSelect = driver.findElement(By.xpath("//td[@class='day' and text()='29']"));
+        dayToSelect.click();
 
-        driver.findElement(By.xpath("//td[normalize-space()='17']")).click();
+        String value = dateInput.getAttribute("value");
+        System.out.println("Выбранная дата: " + value);
+        Assertions.assertTrue(value.contains("29"));
 
 
 
