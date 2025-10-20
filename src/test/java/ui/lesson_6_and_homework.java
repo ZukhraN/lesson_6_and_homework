@@ -3,10 +3,13 @@ package ui;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.*;
 import java.io.File;
 import java.time.Duration;
 import java.util.List;
@@ -175,5 +178,53 @@ public class lesson_6_and_homework {
 
     }
 
+    @Test
+    void navigationTests() throws InterruptedException {
+
+        WebElement navPage = driver.findElement(By.xpath("//a[@href='navigation1.html']"));
+        navPage.click();
+        Assertions.assertEquals("Navigation example", driver.findElement(By.xpath("//h1[@class='display-6']")).getText());
+
+        WebElement textBlock = driver.findElement(By.className("lead"));
+        Assertions.assertTrue(textBlock.getText().contains("Lorem ipsum"), "Текст элемента не содержит слово 'Lorem'");
+
+    }
+
+    @Test
+    void dropDowmPage() throws InterruptedException{
+
+        WebElement dropDownPage = driver.findElement(By.xpath("//a[@href='dropdown-menu.html']"));
+        dropDownPage.click();
+        Assertions.assertEquals("Dropdown menu", driver.findElement(By.className("display-6")).getText());
+
+        Actions actions = new Actions(driver);
+        WebElement dropdown1 = driver.findElement(By.id("my-dropdown-1"));
+        dropdown1.click();
+        Assertions.assertTrue(driver.findElement(By.cssSelector("ul.dropdown-menu.show")).isDisplayed());
+
+        WebElement dropdown2 = driver.findElement(By.id("my-dropdown-2"));
+        actions.contextClick(dropdown2).perform();
+        Assertions.assertTrue(driver.findElement(By.id("context-menu-2")).isDisplayed());
+
+        WebElement dropdown3 = driver.findElement(By.id("my-dropdown-3"));
+        actions.doubleClick(dropdown3).perform();
+        Assertions.assertTrue(driver.findElement(By.id("context-menu-3")).isDisplayed());
+
+    }
+
+    @Test
+    void dragAndDrop(){
+
+        WebElement dragAndDropPage = driver.findElement(By.xpath("//a[@href='drag-and-drop.html']"));
+        dragAndDropPage.click();
+        Assertions.assertEquals("Drag and drop", driver.findElement(By.className("display-6")).getText());
+
+        Actions actions = new Actions(driver);
+        WebElement draggable = driver.findElement(By.id("draggable"));
+        WebElement target = driver.findElement(By.id("target"));
+
+        actions.dragAndDrop(draggable, target).perform();
+
+    }
 
 }
