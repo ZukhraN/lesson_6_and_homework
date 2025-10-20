@@ -1,13 +1,7 @@
 package ui;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -88,7 +82,7 @@ public class lesson_6_and_homework {
     }
 
     @Test
-    void inputTfextTest() throws InterruptedException{
+    void inputTextTest() throws InterruptedException{
 
         WebElement webFormButton = driver.findElement(By.xpath("//a[@href='web-form.html']"));
         Thread.sleep(1000);
@@ -128,8 +122,6 @@ public class lesson_6_and_homework {
         WebElement fileInput = driver.findElement(By.name("my-file"));
         fileInput.sendKeys(uploadFile.getAbsolutePath());
 
-        //driver.findElement(By..click();
-        //Assertions.assertEquals("file.jpg", fileInput.getText());
 
         WebElement checkbox = driver.findElement(By.xpath("//input[@type='checkbox']"));
         if (!checkbox.isSelected()){
@@ -147,11 +139,10 @@ public class lesson_6_and_homework {
 
         WebElement colors = driver.findElement(By.name("my-colors"));
         colors.sendKeys("#00ff00");
-        colors.sendKeys(Keys.TAB);
 
-        WebElement dateInput = driver.findElement(By.xpath("//input[@type='color']"));
+
+        WebElement dateInput = driver.findElement(By.name("my-date"));
         dateInput.click();
-
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".datepicker-days")));
@@ -164,8 +155,23 @@ public class lesson_6_and_homework {
         Assertions.assertTrue(value.contains("29"));
 
 
+        WebElement rangeSlider = driver.findElement(By.name("my-range"));
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].value = 10; arguments[0].dispatchEvent(new Event('input')); arguments[0].dispatchEvent(new Event('change'));",
+                rangeSlider
+        );
 
 
+        WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        submitButton.click();
+        String currentUrl = driver.getCurrentUrl();
+
+        Assertions.assertTrue(currentUrl.contains("my-text=Test+text"));
+        Assertions.assertTrue(currentUrl.contains("my-select=2"));
+        Assertions.assertTrue(currentUrl.contains("my-datalist=Seattle"));
+        Assertions.assertTrue(currentUrl.contains("my-file=file.jpg"));
+        Assertions.assertTrue(currentUrl.contains("my-colors=%2300ff00"));
+        Assertions.assertTrue(currentUrl.contains("&my-range=10"));
 
     }
 
