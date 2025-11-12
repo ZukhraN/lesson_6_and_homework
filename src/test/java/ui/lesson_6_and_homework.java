@@ -2,33 +2,28 @@ package ui;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import znurmanova.pageObjects.HomePage;
 
-import javax.swing.*;
 import java.io.File;
 import java.time.Duration;
 import java.util.List;
 
-public class lesson_6_and_homework {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    private static final String BASE_URL="https://bonigarcia.dev/selenium-webdriver-java/";
-    private WebDriver driver;
+public class lesson_6_and_homework extends BaseTests {
 
-    @BeforeEach
-    void setUp(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get(BASE_URL);
-    }
+    HomePage homePage = new HomePage(driver);
 
-    @AfterEach
-    void tearDown(){
-        driver.close();
+    void openHomePageTest(){
+
+        homePage.open();
+        String actualTitle = homePage.getTitle();
+
+        assertEquals("Hands-On Selenium WebDriver with Java", actualTitle);
     }
 
     @Test
@@ -44,19 +39,19 @@ public class lesson_6_and_homework {
         WebElement selectElement = driver.findElement(By.name("my-select"));
         Select select = new Select(selectElement);
         String actualText = select.getFirstSelectedOption().getText();
-        Assertions.assertEquals("Open this select menu", actualText);
+        assertEquals("Open this select menu", actualText);
 
         select.selectByIndex(2);
-        Assertions.assertEquals("Two", select.getFirstSelectedOption().getText());
+        assertEquals("Two", select.getFirstSelectedOption().getText());
 
         select.selectByValue("3");
-        Assertions.assertEquals("Three", select.getFirstSelectedOption().getText());
+        assertEquals("Three", select.getFirstSelectedOption().getText());
 
         List<WebElement> selected = select.getAllSelectedOptions();
-        Assertions.assertEquals(1, selected.size());
+        assertEquals(1, selected.size());
 
         List<WebElement> options = select.getOptions();
-        Assertions.assertEquals(4, options.size());
+        assertEquals(4, options.size());
 
     }
 
@@ -79,9 +74,9 @@ public class lesson_6_and_homework {
         inputTextArea.click();
         inputTextArea.sendKeys("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo");
 
-        Assertions.assertEquals("Test text", inputText.getDomProperty("value"));
-        Assertions.assertEquals("password", inputTextPassword.getDomProperty("value"));
-        Assertions.assertEquals("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo", inputTextArea.getDomProperty("value"));
+        assertEquals("Test text", inputText.getDomProperty("value"));
+        assertEquals("password", inputTextPassword.getDomProperty("value"));
+        assertEquals("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo", inputTextArea.getDomProperty("value"));
     }
 
     @Test
@@ -95,18 +90,18 @@ public class lesson_6_and_homework {
         inputText.click();
         inputText.sendKeys("Test text");
 
-        Assertions.assertEquals("Test text", inputText.getDomProperty("value"));
+        assertEquals("Test text", inputText.getDomProperty("value"));
 
         WebElement disableInput = driver.findElement(By.name("my-disabled"));
-        Assertions.assertEquals("true", disableInput.getDomAttribute("disabled"));
+        assertEquals("true", disableInput.getDomAttribute("disabled"));
 
         WebElement readonlyInput = driver.findElement(By.name("my-readonly"));
-        Assertions.assertEquals("true", readonlyInput.getDomAttribute("readonly"));
+        assertEquals("true", readonlyInput.getDomAttribute("readonly"));
 
         WebElement selectOption = driver.findElement(By.className("form-select"));
         Select select = new Select(selectOption);
         select.selectByIndex(2);
-        Assertions.assertEquals("Two", select.getFirstSelectedOption().getText());
+        assertEquals("Two", select.getFirstSelectedOption().getText());
 
         WebElement inputCity = driver.findElement(By.name("my-datalist"));
         inputCity.sendKeys("Seattle");
@@ -118,7 +113,7 @@ public class lesson_6_and_homework {
         }
 
         String currentSelected = inputCity.getDomProperty("value");
-        Assertions.assertEquals("Seattle", currentSelected);
+        assertEquals("Seattle", currentSelected);
 
 
         File uploadFile = new File("src/test/resources/file.jpg");
@@ -183,7 +178,7 @@ public class lesson_6_and_homework {
 
         WebElement navPage = driver.findElement(By.xpath("//a[@href='navigation1.html']"));
         navPage.click();
-        Assertions.assertEquals("Navigation example", driver.findElement(By.xpath("//h1[@class='display-6']")).getText());
+        assertEquals("Navigation example", driver.findElement(By.xpath("//h1[@class='display-6']")).getText());
 
         WebElement textBlock = driver.findElement(By.className("lead"));
         Assertions.assertTrue(textBlock.getText().contains("Lorem ipsum"), "Текст элемента не содержит слово 'Lorem'");
@@ -206,7 +201,7 @@ public class lesson_6_and_homework {
 
         WebElement dropDownPage = driver.findElement(By.xpath("//a[@href='dropdown-menu.html']"));
         dropDownPage.click();
-        Assertions.assertEquals("Dropdown menu", driver.findElement(By.className("display-6")).getText());
+        assertEquals("Dropdown menu", driver.findElement(By.className("display-6")).getText());
 
         Actions actions = new Actions(driver);
         WebElement dropdown1 = driver.findElement(By.id("my-dropdown-1"));
@@ -228,7 +223,7 @@ public class lesson_6_and_homework {
 
         WebElement dragAndDropPage = driver.findElement(By.xpath("//a[@href='drag-and-drop.html']"));
         dragAndDropPage.click();
-        Assertions.assertEquals("Drag and drop", driver.findElement(By.className("display-6")).getText());
+        assertEquals("Drag and drop", driver.findElement(By.className("display-6")).getText());
 
         Actions actions = new Actions(driver);
         WebElement draggable = driver.findElement(By.id("draggable"));
