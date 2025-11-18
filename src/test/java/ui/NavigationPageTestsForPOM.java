@@ -12,14 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertTrue;
 
-public class NavigationPageTestsForPOM extends BasePageTest{
+public class NavigationPageTestsForPOM extends BasePageTest {
 
     HomePage homePage;
     NavigationPage navigationPage;
 
     @BeforeEach
     void setupPage(){
-        HomePage homePage = new HomePage(driver);
+        homePage = new HomePage(driver);
         navigationPage = new NavigationPage(driver);
 
         homePage.open();
@@ -28,14 +28,26 @@ public class NavigationPageTestsForPOM extends BasePageTest{
 
     @Step("Open navigation page")
     @Test
-    void openNavigationTest(){
+    void openNavigationTest() throws InterruptedException{
         String currentUrl = navigationPage.getCurrentUrl();
         WebElement title = navigationPage.getTitle();
-        String webFormUrl = navigationPage.getUrl();
+        String navUrl = navigationPage.getUrl();
 
-        assertEquals(homePage.BASE_URL + webFormUrl, currentUrl);
+        assertEquals(homePage.BASE_URL + navUrl, currentUrl);
         assertEquals("Navigation example", title.getText());
 
+    }
+
+    @Step("Open navigation page")
+    @Test
+    void openNavigationTest1() throws InterruptedException{
+        String currentUrl = navigationPage.getCurrentUrl();
+        String navUrl = navigationPage.getUrl();
+
+        navigationPage.clickNextButton();
+        Thread.sleep(3000);
+
+        assertEquals(homePage.BASE_URL + navUrl, currentUrl);
     }
 
     @Step("Find exact word")
