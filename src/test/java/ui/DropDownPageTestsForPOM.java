@@ -1,4 +1,4 @@
-package ui.POM;
+package ui;
 
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import pages.DropDownPage;
-import pages.HomePage;
+import znurmanova.pageObjects.DropDownPage;
+import znurmanova.pageObjects.HomePage;
 
 
 public class DropDownPageTestsForPOM extends BasePageTest {

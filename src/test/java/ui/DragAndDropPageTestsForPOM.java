@@ -1,4 +1,4 @@
-package ui.POM;
+package ui;
 
 
 import io.qameta.allure.Step;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import pages.DragAndDropPage;
-import pages.HomePage;
+import znurmanova.pageObjects.DragAndDropPage;
+import znurmanova.pageObjects.HomePage;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,4 +1,4 @@
-package ui.POM;
+package ui;
 
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-import pages.HomePage;
-import pages.WebFormPage;
+import znurmanova.pageObjects.HomePage;
+import znurmanova.pageObjects.WebFormPage;
 
 import java.util.List;
 

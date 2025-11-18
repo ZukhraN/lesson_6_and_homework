@@ -1,12 +1,12 @@
-package ui.POM;
+package ui;
 
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import pages.HomePage;
-import pages.NavigationPage;
+import znurmanova.pageObjects.HomePage;
+import znurmanova.pageObjects.NavigationPage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testng.Assert.assertNotEquals;
