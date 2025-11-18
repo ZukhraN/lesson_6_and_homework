@@ -10,7 +10,7 @@ import pages.DropDownPage;
 import pages.HomePage;
 
 
-class DropDownPageTestsForPOM extends BasePageTest {
+public class DropDownPageTestsForPOM extends BasePageTest {
 
     HomePage homePage;
     DropDownPage dropDownPage;

@@ -16,9 +16,13 @@ public class WebFormPage extends BasePage {
     //locators
     By title = By.className("display-6");
     By textarea = By.name("my-textarea");
-    By submitButton= By.xpath("//button[@type='submit']");
+    By submitButton = By.xpath("//button[@type='submit']");
     By titleH1 = By.xpath("//h1[text()='Form submitted']");
     By disabledField = By.name("my-disabled");
+    By dropdownSelect = By.name("my-select");
+    By textInput = By.xpath("//input[@name='my-text']");
+    By passwordInput = By.xpath("//input[@name='my-password']");
+    By textArea = By.xpath("//textarea[@name='my-textarea']");
 
     //methods
 
@@ -50,5 +54,25 @@ public class WebFormPage extends BasePage {
     @Step("Find element disabledField")
     public WebElement disabledField() {
         return driver.findElement(disabledField);
+    }
+
+    @Step("Find element dropdown select")
+    public WebElement dropdownSelect() {
+        return driver.findElement(dropdownSelect);
+    }
+
+    @Step("Find element textInput")
+    public WebElement textInput() {
+        return driver.findElement(textInput);
+    }
+
+    @Step("Find element passwordInput")
+    public WebElement passwordInput() {
+        return driver.findElement(passwordInput);
+    }
+
+    @Step("Find element text area")
+    public WebElement textArea() {
+        return driver.findElement(textArea);
     }
 }

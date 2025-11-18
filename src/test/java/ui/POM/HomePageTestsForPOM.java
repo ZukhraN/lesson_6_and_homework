@@ -2,7 +2,7 @@ package ui.POM;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HomePageForPOM extends BasePageTest {
+public class HomePageTestsForPOM extends BasePageTest {
 
 
     //@Test

@@ -43,4 +43,10 @@ public class HomePage extends BasePage{
         driver.findElement(By.linkText("Dropdown menu")).click();
         return new DropDownPage(driver);
     }
+
+    @Step("Opening Navigation Page")
+    public NavigationPage openNavigationPage (){
+        driver.findElement(By.linkText("Navigation")).click();
+        return new NavigationPage(driver);
+    }
 }
