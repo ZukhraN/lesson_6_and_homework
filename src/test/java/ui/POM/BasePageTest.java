@@ -1,4 +1,4 @@
-package ui;
+package ui.POM;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-class BaseTests {
+public class BasePageTest {
 
     protected static final String BASE_URL="https://bonigarcia.dev/selenium-webdriver-java/";
     WebDriver driver;

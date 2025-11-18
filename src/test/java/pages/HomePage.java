@@ -1,16 +1,15 @@
-package znurmanova.pageObjects;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
-
-    WebDriver driver;
+public class HomePage extends BasePage{
 
     public static final String BASE_URL="https://bonigarcia.dev/selenium-webdriver-java/";
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
+        open();
     }
 
     //locators
@@ -21,17 +20,27 @@ public class HomePage {
         driver.get(BASE_URL);
     }
 
-    @Step("Getting title of page")
-    public String getTitle() {
+    @Step("Get web title")
+    public String getWebTitle(){
         return driver.getTitle();
     }
 
-    @Step("Opening Web Form Page")
     //methods -> open another PO
+    @Step("Opening Web Form Page")
     public WebFormPage openWebFormPage(){
         driver.findElement(By.linkText("Web form")).click();
         return new WebFormPage(driver);
     }
 
+    @Step("Opening Web Form Page")
+    public DragAndDropPage openDragAndDropPage (){
+        driver.findElement(By.linkText("Drag and drop")).click();
+        return new DragAndDropPage(driver);
+    }
 
+    @Step("Opening Dropdown menu Page")
+    public DropDownPage openDropDownPage (){
+        driver.findElement(By.linkText("Dropdown menu")).click();
+        return new DropDownPage(driver);
+    }
 }

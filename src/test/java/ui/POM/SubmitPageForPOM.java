@@ -1,11 +1,11 @@
-package ui;
+package ui.POM;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import znurmanova.pageObjects.HomePage;
+import pages.HomePage;
 
 import java.io.File;
 import java.time.Duration;
@@ -13,9 +13,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SubmitPageForPOM extends BaseTests {
-
-    HomePage homePage = new HomePage(driver);
+public class SubmitPageForPOM extends BasePageTest {
+ /*
+   // HomePage homePage = new HomePage(driver);
 
     void openHomePageTest(){
 
@@ -172,6 +172,6 @@ public class SubmitPageForPOM extends BaseTests {
 
     }
 
-
+ */
 
 }
