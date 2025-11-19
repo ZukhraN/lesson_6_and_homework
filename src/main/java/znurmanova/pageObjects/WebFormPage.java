@@ -4,19 +4,26 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class WebFormPage extends BasePage {
 
     private static final String WEB_FORM_URL = "web-form.html";
 
+    @FindBy(xpath="//button[@type='submit']")
+    private WebElement submitButton;
+
     public WebFormPage(WebDriver driver) {
         super(driver);
+        PageFactory.initElements(driver, this);
     }
+
 
     //locators
     By title = By.className("display-6");
     By textarea = By.name("my-textarea");
-    By submitButton = By.xpath("//button[@type='submit']");
+
     By titleH1 = By.xpath("//h1[text()='Form submitted']");
     By disabledField = By.name("my-disabled");
     By dropdownSelect = By.name("my-select");
@@ -43,7 +50,7 @@ public class WebFormPage extends BasePage {
 
     @Step("Find element submitButton")
     public WebElement getSubmitButton() {
-        return driver.findElement(submitButton);
+        return submitButton;
     }
 
     @Step("Find element H1")
