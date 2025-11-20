@@ -8,12 +8,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class WebFormPage extends  BasePage {
     private static final String WEB_FORM_URL = "web-form.html";
-    @Step("")
+    @Step("Get subpage url")
     public String getWebFormExpectedUrl(){
         return WEB_FORM_URL;
     }
 
-    @Step("")
+    @Step("Get readonly input")
     public SelenideElement getReadonlyInput(){
         return $(By.name("my-readonly"));
     }
