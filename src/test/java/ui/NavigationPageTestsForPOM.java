@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertTrue;
 
-public class NavigationPageTestsForPOM extends BasePageTest{
+public class NavigationPageTestsForPOM extends BasePageTests {
 
     HomePage homePage;
     NavigationPage navigationPage;

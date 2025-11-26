@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class BasePageTest {
+public class BasePageTests {
 
     protected static final String BASE_URL="https://bonigarcia.dev/selenium-webdriver-java/";
     WebDriver driver;

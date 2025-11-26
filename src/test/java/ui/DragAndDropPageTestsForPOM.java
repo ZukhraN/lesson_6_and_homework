@@ -12,7 +12,7 @@ import znurmanova.pageObjects.HomePage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DragAndDropPageTestsForPOM extends BasePageTest {
+public class DragAndDropPageTestsForPOM extends BasePageTests {
 
     HomePage homePage;
     DragAndDropPage dragAndDropPage;

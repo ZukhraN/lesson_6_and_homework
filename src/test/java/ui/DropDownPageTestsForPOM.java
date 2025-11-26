@@ -10,7 +10,7 @@ import znurmanova.pageObjects.DropDownPage;
 import znurmanova.pageObjects.HomePage;
 
 
-public class DropDownPageTestsForPOM extends BasePageTest {
+public class DropDownPageTestsForPOM extends BasePageTests {
 
     HomePage homePage;
     DropDownPage dropDownPage;

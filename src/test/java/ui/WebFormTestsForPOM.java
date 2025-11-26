@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-class WebFormTestsForPOM extends BasePageTest {
+class WebFormTestsForPOM extends BasePageTests {
 
     HomePage homePage;
     WebFormPage webFormPage;
