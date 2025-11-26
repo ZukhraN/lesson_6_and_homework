@@ -13,23 +13,6 @@ import static znurmanova.pageObjects.HomePage.BASE_URL;
 
 public class SelenideTests {
 
-    @BeforeAll
-    static void setup() {
-        Configuration.browser = "chrome";
-        Configuration.headless = true;
-        Configuration.timeout = 6000;
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "normal";
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless=new");
-
-        Configuration.browserCapabilities = options;
-    }
-
-
     @Test
     void openHomePageTest(){
         HomePage homePage = new HomePage();

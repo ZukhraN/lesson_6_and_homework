@@ -17,7 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions: 
       contents: read
-      
+
+    services:
+      selenium:
+        image: selenium/standalone-chrome:latest
+        options: --shm-size 2g
+        ports:
+          - 4444:4444
+
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 22
