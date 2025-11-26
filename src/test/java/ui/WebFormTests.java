@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-class WebFormTests extends BaseTests {
+class WebFormTests extends BasePageTests {
 
     @Step("Open web form")
     @Test
