@@ -26,10 +26,10 @@ jobs:
         java-version: '22'
         distribution: 'temurin'
 
-        - name: Install Chrome
-          uses: browser-actions/setup-chrome@v1
-          with:
-            chrome-version: stable
+    - name: Install Chrome
+      uses: browser-actions/setup-chrome@v1
+      with:
+        chrome-version: stable
 
         cache: maven
     - name: Build with Maven
