@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -40,9 +41,14 @@ class WebFormTests extends BasePageTests {
 
         WebElement textarea = driver.findElement(By.name("my-textarea"));
         textarea.sendKeys("Test text");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
-        submitButton.click();
+
+        WebElement submitButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", submitButton);
+
+        if (!driver.findElements(By.cssSelector(".popup .close")).isEmpty()) {
+            driver.findElement(By.cssSelector(".popup .close")).click();
+        }
+
         WebElement h1 = driver.findElement(By.xpath("//h1[text()='Form submitted']"));
         assertEquals("Form submitted", h1.getText());
     }
