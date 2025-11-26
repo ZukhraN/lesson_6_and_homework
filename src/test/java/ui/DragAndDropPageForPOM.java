@@ -3,12 +3,13 @@ package ui;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DragAndDropPageForPOM {
+public class DragAndDropPageForPOM extends BasePageTests{
 
     @Test
     void dragAndDrop(){
