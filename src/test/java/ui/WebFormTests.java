@@ -5,6 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +40,9 @@ class WebFormTests extends BasePageTests {
 
         WebElement textarea = driver.findElement(By.name("my-textarea"));
         textarea.sendKeys("Test text");
-        driver.findElement(By.xpath("//button[@type='submit']")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@type='submit']")));
+        submitButton.click();
         WebElement h1 = driver.findElement(By.xpath("//h1[text()='Form submitted']"));
         assertEquals("Form submitted", h1.getText());
     }
