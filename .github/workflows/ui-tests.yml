@@ -49,16 +49,16 @@ jobs:
 
       - name: Generate Allure Report
         if: always()
-        uses: simple-elf/allure-report-action@v1.10
+        uses: simple-elf/allure-report-action@v1.10.2
         with:
           allure_results: allure-results
           allure_history:  gh-pages
           keep_reports: 20
 
-      - name: Publish Report ti GitHub Pages
+      - name: Publish Report GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: target/allure-report
           publish_branch: gh-pages
-          publish_dir: allure-history
