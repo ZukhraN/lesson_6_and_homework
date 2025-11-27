@@ -51,7 +51,7 @@ jobs:
         uses: simple-elf/allure-report-action@v1.10
         if: always()
         with:
-          allure-results: allure-results
+          allure-results: build/allure-results
           allure-history:  allure-history
           keep-reports: 20
 
