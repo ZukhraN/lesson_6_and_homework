@@ -1,9 +1,8 @@
 package ui;
 
-import org.junit.jupiter.api.Assertions;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -11,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DragAndDropPageForPOM extends BasePageTests{
 
+    @Step("Проверка страницы драг энд дроп")
     @Test
     void dragAndDrop(){
 

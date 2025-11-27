@@ -1,6 +1,7 @@
 package selenide;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -26,7 +27,7 @@ public class SelenideTests {
         Configuration.browserCapabilities = options;
     }
 
-
+    @Step("Проверка открытия хоум страницы")
     @Test
     void openHomePageTest(){
         HomePage homePage = new HomePage();
@@ -35,6 +36,7 @@ public class SelenideTests {
         assertEquals(BASE_URL, homePage.getCurrentUrl());
     }
 
+    @Step("Проверка открытия страницы вэб формы")
     @Test
     void openWebFormPAgeTest(){
         HomePage homePage = new HomePage();
@@ -45,6 +47,7 @@ public class SelenideTests {
         assertEquals("Hands-On Selenium WebDriver with Java", webFormPage.getWebTitle());
     }
 
+    @Step("Проверка поля только для чтения")
     @Test
     void readonlyTextTest(){
         HomePage homePage = new HomePage();
